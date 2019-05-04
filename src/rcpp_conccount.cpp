@@ -6,7 +6,8 @@
 #include <algorithm>
 #include <tuple>
 using namespace Rcpp;
-
+//Sys.setenv("PKG_CXXFLAGS"="-std=c++11")
+  
 std::pair<std::vector<int>, std::vector<int> > conc_count(std::vector<int> arr, 
                                                           std::vector<int> counts)
 {
@@ -37,7 +38,7 @@ std::pair<std::vector<int>, std::vector<int> > conc_count(std::vector<int> arr,
     int j = 0;
     
     for (int u = 0; u < ai.size(); u++) {
-      inv_count.push_back(ai[i] + bi[i]);
+      inv_count.push_back(ai[u] + bi[u]);
     }
     
     while(i < a.size() && j < b.size()) {
@@ -71,7 +72,7 @@ std::tuple<std::vector<int>, std::vector<int>, std::vector<int> > inversion_pair
   }
   else {
     
-    std::vector<int> a, b, c, left_pair, right_pair, pairs;
+    std::vector<int> a, b, c, left_pair, right_pair;
     std::tuple<std::vector<int>, std::vector<int>, std::vector<int> > left, right;
     
     int middle = ((int)arr.size() + 1) / 2;
@@ -106,14 +107,17 @@ std::tuple<std::vector<int>, std::vector<int>, std::vector<int> > inversion_pair
       else {
         c.push_back(b[j]);
         // Inversion, add pair 
-        if (std::find(lines.begin(), lines.end(), a[i]) != lines.end()) {
-          pairs.push_back(a[i]);
-          pairs.push_back(b[j]);  
-        } 
         if (std::find(lines.begin(), lines.end(), b[j]) != lines.end()) {
           for (int u = i; u < a.size(); u++) {
             pairs.push_back(a[u]);
             pairs.push_back(b[j]);
+          }
+        } else {
+          for (int u = i; u < a.size(); u++) {
+            if (std::find(lines.begin(), lines.end(), a[u]) != lines.end()) {
+              pairs.push_back(a[u]);
+              pairs.push_back(b[j]);
+            }
           }
         }
         j++;
