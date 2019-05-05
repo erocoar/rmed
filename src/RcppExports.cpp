@@ -5,6 +5,28 @@
 
 using namespace Rcpp;
 
+// get_inv_involvement
+std::vector<int> get_inv_involvement(std::vector<int> arr);
+RcppExport SEXP _rmed_get_inv_involvement(SEXP arrSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<int> >::type arr(arrSEXP);
+    rcpp_result_gen = Rcpp::wrap(get_inv_involvement(arr));
+    return rcpp_result_gen;
+END_RCPP
+}
+// get_inv_count
+int get_inv_count(std::vector<int> arr);
+RcppExport SEXP _rmed_get_inv_count(SEXP arrSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<int> >::type arr(arrSEXP);
+    rcpp_result_gen = Rcpp::wrap(get_inv_count(arr));
+    return rcpp_result_gen;
+END_RCPP
+}
 // get_inv_pairs
 std::vector<int> get_inv_pairs(std::vector<int> v, std::vector<int> lines);
 RcppExport SEXP _rmed_get_inv_pairs(SEXP vSEXP, SEXP linesSEXP) {
@@ -17,21 +39,11 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// get_conc_count
-std::vector<int> get_conc_count(std::vector<int> arr);
-RcppExport SEXP _rmed_get_conc_count(SEXP arrSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<int> >::type arr(arrSEXP);
-    rcpp_result_gen = Rcpp::wrap(get_conc_count(arr));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_rmed_get_inv_involvement", (DL_FUNC) &_rmed_get_inv_involvement, 1},
+    {"_rmed_get_inv_count", (DL_FUNC) &_rmed_get_inv_count, 1},
     {"_rmed_get_inv_pairs", (DL_FUNC) &_rmed_get_inv_pairs, 2},
-    {"_rmed_get_conc_count", (DL_FUNC) &_rmed_get_conc_count, 1},
     {NULL, NULL, 0}
 };
 
