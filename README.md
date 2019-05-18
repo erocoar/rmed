@@ -3,11 +3,11 @@
 
 
 ### Installation
-`ggpol` can be installed via GitHub:
+`rmed` can be installed via GitHub:
 
 ```r
 if (!require(devtools)) {
     install.packages('devtools')
 }
-devtools::install_github('erocoar/ggpol')
+devtools::install_github('erocoar/rmed')
 ```
