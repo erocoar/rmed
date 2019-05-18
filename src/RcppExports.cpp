@@ -39,11 +39,39 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// median_slopes
+NumericVector median_slopes(NumericVector x, NumericVector y, NumericVector idx, int mdn_idx);
+RcppExport SEXP _rmed_median_slopes(SEXP xSEXP, SEXP ySEXP, SEXP idxSEXP, SEXP mdn_idxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type idx(idxSEXP);
+    Rcpp::traits::input_parameter< int >::type mdn_idx(mdn_idxSEXP);
+    rcpp_result_gen = Rcpp::wrap(median_slopes(x, y, idx, mdn_idx));
+    return rcpp_result_gen;
+END_RCPP
+}
+// median_estimator
+double median_estimator(NumericVector x, NumericVector y);
+RcppExport SEXP _rmed_median_estimator(SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(median_estimator(x, y));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_rmed_get_inv_involvement", (DL_FUNC) &_rmed_get_inv_involvement, 1},
     {"_rmed_get_inv_count", (DL_FUNC) &_rmed_get_inv_count, 1},
     {"_rmed_get_inv_pairs", (DL_FUNC) &_rmed_get_inv_pairs, 2},
+    {"_rmed_median_slopes", (DL_FUNC) &_rmed_median_slopes, 4},
+    {"_rmed_median_estimator", (DL_FUNC) &_rmed_median_estimator, 2},
     {NULL, NULL, 0}
 };
 

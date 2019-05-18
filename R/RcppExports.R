@@ -13,3 +13,11 @@ get_inv_pairs <- function(v, lines) {
     .Call(`_rmed_get_inv_pairs`, v, lines)
 }
 
+median_slopes <- function(x, y, idx, mdn_idx) {
+    .Call(`_rmed_median_slopes`, x, y, idx, mdn_idx)
+}
+
+median_estimator <- function(x, y) {
+    .Call(`_rmed_median_estimator`, x, y)
+}
+
