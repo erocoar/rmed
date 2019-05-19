@@ -21,3 +21,7 @@ median_estimator <- function(x, y) {
     .Call(`_rmed_median_estimator`, x, y)
 }
 
+median_intercept <- function(x, y, slope) {
+    .Call(`_rmed_median_intercept`, x, y, slope)
+}
+

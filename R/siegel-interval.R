@@ -1,4 +1,4 @@
-siegel_interval <- function(xx, yy) {
+siegel_interval <- function(xx, yy) { # TODO add argument for TOL
   n <- length(xx)
   low <- ((n - 1) %% 2 == 0) * 1
   

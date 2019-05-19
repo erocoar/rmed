@@ -65,6 +65,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// median_intercept
+double median_intercept(NumericVector x, NumericVector y, double slope);
+RcppExport SEXP _rmed_median_intercept(SEXP xSEXP, SEXP ySEXP, SEXP slopeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< double >::type slope(slopeSEXP);
+    rcpp_result_gen = Rcpp::wrap(median_intercept(x, y, slope));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_rmed_get_inv_involvement", (DL_FUNC) &_rmed_get_inv_involvement, 1},
@@ -72,6 +85,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_rmed_get_inv_pairs", (DL_FUNC) &_rmed_get_inv_pairs, 2},
     {"_rmed_median_slopes", (DL_FUNC) &_rmed_median_slopes, 4},
     {"_rmed_median_estimator", (DL_FUNC) &_rmed_median_estimator, 2},
+    {"_rmed_median_intercept", (DL_FUNC) &_rmed_median_intercept, 3},
     {NULL, NULL, 0}
 };
 

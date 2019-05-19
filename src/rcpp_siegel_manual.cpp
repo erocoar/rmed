@@ -29,6 +29,15 @@ double median_estimator(NumericVector x, NumericVector y) {
   return(median(mdns));
 }
 
+// [[Rcpp::export]]
+double median_intercept(NumericVector x, NumericVector y, double slope) {
+  NumericVector intercepts (x.length());
+  for (int i = 0; i < x.length(); i++) {
+    intercepts[i] = y[i] - slope * x[i];
+  }
+  return(median(intercepts));
+}
+
 //#http://dirk.eddelbuettel.com/code/rcpp/Rcpp-quickref.pdf
 //#http://adv-r.had.co.nz/Rcpp.html#rcpp-sugar
 //#https://teuder.github.io/rcpp4everyone_en/300_Rmath.html
